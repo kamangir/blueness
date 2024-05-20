@@ -14,7 +14,11 @@ setup(
     long_description=get_long_description(__file__),
     long_description_content_type="text/markdown",
     url="https://github.com/kamangir/blue-plugin",
-    packages=[NAME],
+    packages=[
+        NAME,
+        f"{NAME}.argparse",
+        f"{NAME}.pypi",
+    ],
     package_data={
         NAME: ["config.env"],
     },
