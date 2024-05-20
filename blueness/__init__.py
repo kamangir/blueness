@@ -4,4 +4,4 @@ ICON = "🌀"
 
 DESCRIPTION = f"{ICON} the blueness of ai."
 
-VERSION = "3.8.1"
+VERSION = "3.9.1"

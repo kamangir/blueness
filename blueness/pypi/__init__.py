@@ -34,7 +34,7 @@ def setup(
             "License :: Public Domain",
             "Operating System :: OS Independent",
         ],
-        install_requires=get_requirements(__file__),
+        install_requires=get_requirements(filename),
         license="Public Domain",
         long_description=get_long_description(filename),
         long_description_content_type="text/markdown",
