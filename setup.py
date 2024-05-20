@@ -1,7 +1,7 @@
 from setuptools import setup
 import os
 
-from blue_plugin import NAME, VERSION, DESCRIPTION
+from blueness import NAME, VERSION, DESCRIPTION
 
 with open(os.path.join(os.path.dirname(__file__), "README.md")) as f:
     long_description = f.read().replace(
@@ -34,3 +34,4 @@ setup(
     ],
     license="Public Domain",
 )
+

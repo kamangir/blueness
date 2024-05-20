@@ -1,4 +1,4 @@
-from blue_plugin import VERSION
+from blueness import VERSION
 
 
 def test_version():
