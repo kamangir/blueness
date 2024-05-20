@@ -18,7 +18,7 @@ setup(
     package_data={
         NAME: ["config.env"],
     },
-    install_requires=get_requirements(__file__),
+    # install_requires=get_requirements(__file__),
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Unix Shell",
