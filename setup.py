@@ -2,15 +2,8 @@ from setuptools import setup
 import os
 
 from blueness import NAME, VERSION, DESCRIPTION
+from blueness.pypi import get_long_description, get_requirements
 
-with open(os.path.join(os.path.dirname(__file__), "README.md")) as f:
-    long_description = f.read().replace(
-        "./",
-        "https://github.com/kamangir/blue-plugin/raw/main/",
-    )
-
-with open(os.path.join(os.path.dirname(__file__), "requirements.txt")) as f:
-    requirements = f.read().strip().split("\n")
 
 setup(
     name=NAME,
@@ -18,14 +11,14 @@ setup(
     author_email="arash@kamangir.net",
     version=VERSION,
     description=DESCRIPTION,
-    long_description=long_description,
+    long_description=get_long_description(__file__),
     long_description_content_type="text/markdown",
     url="https://github.com/kamangir/blue-plugin",
     packages=[NAME],
     package_data={
         NAME: ["config.env"],
     },
-    install_requires=requirements,
+    install_requires=get_requirements(__file__),
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Unix Shell",
@@ -34,4 +27,3 @@ setup(
     ],
     license="Public Domain",
 )
-
