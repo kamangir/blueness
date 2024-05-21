@@ -1,5 +1,6 @@
 import os
 from setuptools import setup as setup_real
+from typing import Tuple
 
 
 def find_file(path: str, filename: str) -> str:
@@ -23,7 +24,7 @@ def get_long_description(filename: str) -> str:
         "README.md",
     )
 
-    repo_name = os.path.basename(os.path.dirname(filename))
+    repo_name = get_repo_name(filename)
 
     with open(filename) as f:
         return f.read().replace(
@@ -33,6 +34,16 @@ def get_long_description(filename: str) -> str:
                 "current" if repo_name == "awesome-bash-cli" else "main",
             ),
         )
+
+
+def get_repo_name(filename: str) -> str:
+    repo_path = os.path.dirname(filename)
+
+    repo_name = os.path.basename(repo_path)
+    if "." in repo_name:
+        repo_name = "-".join(repo_name.split("-")[:-1])
+
+    return repo_name
 
 
 def get_requirements(filename: str) -> list:
@@ -49,8 +60,7 @@ def setup(
     filename: str,
     **kwargs,
 ):
-    repo_path = os.path.dirname(filename)
-    repo_name = os.path.basename(repo_path)
+    repo_name = get_repo_name(filename)
 
     setup_real(
         author="Arash Abadpour (Kamangir)",
