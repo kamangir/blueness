@@ -57,7 +57,7 @@ def setup(
         ],
         install_requires=get_requirements(filename),
         license="Public Domain",
-        long_description=get_long_description(filename),
+        long_description=get_long_description(filename, repo_name),
         long_description_content_type="text/markdown",
         url=f"https://github.com/kamangir/{repo_name}",
         **kwargs,
