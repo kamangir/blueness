@@ -2,11 +2,30 @@ import os
 from setuptools import setup as setup_real
 
 
-def get_long_description(filename: str) -> str:
-    repo_path = os.path.dirname(filename)
-    repo_name = os.path.basename(repo_path)
+def find_file(path: str, filename: str) -> str:
+    safety_counter = 0
+    while True:
+        full_filename = os.path.join(path, filename)
+        if os.path.exists(full_filename):
+            return full_filename
 
-    with open(os.path.join(repo_path, "README.md")) as f:
+        path = os.path.dirname(path)
+
+        safety_counter += 1
+
+        if path == "/" or safety_counter > 20:
+            raise FileNotFoundError(filename)
+
+
+def get_long_description(filename: str) -> str:
+    filename = find_file(
+        os.path.dirname(filename),
+        "README.md",
+    )
+
+    repo_name = os.path.basename(os.path.dirname(filename))
+
+    with open(filename) as f:
         return f.read().replace(
             "./",
             f"https://github.com/kamangir/{repo_name}/raw/main/",
@@ -14,7 +33,12 @@ def get_long_description(filename: str) -> str:
 
 
 def get_requirements(filename: str) -> list:
-    with open(os.path.join(os.path.dirname(filename), "requirements.txt")) as f:
+    filename = find_file(
+        os.path.dirname(filename),
+        "requirements.txt",
+    )
+
+    with open(filename) as f:
         return f.read().strip().split("\n")
 
 

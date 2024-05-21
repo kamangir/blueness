@@ -9,6 +9,5 @@ setup(
     packages=[
         NAME,
         f"{NAME}.argparse",
-        f"{NAME}.pypi",
     ],
 )
