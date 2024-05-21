@@ -18,39 +18,24 @@ def find_file(path: str, filename: str) -> str:
             raise FileNotFoundError(filename)
 
 
-def get_long_description(filename: str) -> str:
-    filename = find_file(
-        os.path.dirname(filename),
-        "README.md",
-    )
-
-    repo_name = get_repo_name(filename)
+def get_long_description(
+    filename: str,
+    repo_name: str,
+) -> str:
+    filename = find_file(os.path.dirname(filename), "README.md")
 
     with open(filename) as f:
         return f.read().replace(
             "./",
-            "https://github.com/kamangir/{}/raw/{}/".format(
+            "https://raw.githubusercontent.com/kamangir/{}/{}/".format(
                 repo_name,
-                "current" if repo_name == "awesome-bash-cli" else "main",
+                "current" if repo_name == "abcli" else "main",
             ),
         )
 
 
-def get_repo_name(filename: str) -> str:
-    repo_path = os.path.dirname(filename)
-
-    repo_name = os.path.basename(repo_path)
-    if "." in repo_name:
-        repo_name = "-".join(repo_name.split("-")[:-1])
-
-    return repo_name
-
-
 def get_requirements(filename: str) -> list:
-    filename = find_file(
-        os.path.dirname(filename),
-        "requirements.txt",
-    )
+    filename = find_file(os.path.dirname(filename), "requirements.txt")
 
     with open(filename) as f:
         return f.read().strip().split("\n")
@@ -58,10 +43,9 @@ def get_requirements(filename: str) -> list:
 
 def setup(
     filename: str,
+    repo_name: str,
     **kwargs,
 ):
-    repo_name = get_repo_name(filename)
-
     setup_real(
         author="Arash Abadpour (Kamangir)",
         author_email="arash@kamangir.net",
