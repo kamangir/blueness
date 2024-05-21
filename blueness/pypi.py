@@ -29,7 +29,8 @@ def get_long_description(filename: str) -> str:
         return f.read().replace(
             "./",
             "https://github.com/kamangir/{}/raw/{}/".format(
-                repo_name, "current" if repo_name == "awesome-bash-cli" else "main"
+                repo_name,
+                "current" if repo_name == "awesome-bash-cli" else "main",
             ),
         )
 
