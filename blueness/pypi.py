@@ -38,7 +38,7 @@ def get_requirements(filename: str) -> list:
     filename = find_file(os.path.dirname(filename), "requirements.txt")
 
     with open(filename) as f:
-        requirements: List[str] = f.read().strip().split("\n")
+        requirements = f.read().strip().split("\n")
 
     return [item for item in requirements if "git+https:" not in item]
 
