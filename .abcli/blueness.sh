@@ -8,24 +8,9 @@ function blueness() {
         return
     fi
 
-    if [ "$task" == "init" ]; then
-        abcli_init blueness "${@:2}"
-    fi
-
-    if [[ "|pylint|pytest|test|" == *"|$task|"* ]]; then
-        abcli_${task} plugin=blueness,$2 \
-            "${@:3}"
-        return
-    fi
-
-    if [[ "|pypi|" == *"|$task|"* ]]; then
-        abcli_${task} "$2" \
-            plugin=blueness,$3 \
-            "${@:4}"
-        return
-    fi
-
-    python3 -m blueness "$@"
+    abcli_generic_task \
+        plugin=blueness,task=$task \
+        "${@:2}"
 }
 
 abcli_log $(blueness version --show_icon 1)
