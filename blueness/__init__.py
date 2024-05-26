@@ -4,4 +4,6 @@ ICON = "🌀"
 
 DESCRIPTION = f"{ICON} the blueness of ai."
 
-VERSION = "3.37.1"
+VERSION = "3.42.1"
+
+REPO_NAME = "blueness"
