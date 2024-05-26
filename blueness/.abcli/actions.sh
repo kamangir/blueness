@@ -1,5 +1,6 @@
 #! /usr/bin/env bash
 
 function blueness_action_git_before_push() {
-    blueness pypi build
+    [[ "$(abcli_git get_branch)" == "main" ]] &&
+        blueness pypi build
 }
