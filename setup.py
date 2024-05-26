@@ -1,6 +1,7 @@
 from blueness import NAME, VERSION, DESCRIPTION
 from blueness.pypi import setup
 
+
 setup(
     filename=__file__,
     repo_name="blueness",
@@ -11,4 +12,8 @@ setup(
         NAME,
         f"{NAME}.argparse",
     ],
+    include_package_data=True,
+    package_data={
+        NAME: [".abcli/*.sh"],
+    },
 )
