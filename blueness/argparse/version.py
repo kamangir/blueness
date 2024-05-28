@@ -1,6 +1,8 @@
 import argparse
 from typing import Tuple
 
+list_of_tasks = ["locate", "version"]
+
 
 def main(
     NAME: str,
@@ -12,7 +14,7 @@ def main(
     parser.add_argument(
         "task",
         type=str,
-        help="version",
+        help="|".join(list_of_tasks),
     )
     parser.add_argument(
         "--show_description",
@@ -28,8 +30,10 @@ def main(
     )
     args = parser.parse_args()
 
-    success = False
-    if args.task == "version":
+    success = args.task in list_of_tasks
+    if args.task == "locate":
+        print(__file__)
+    elif args.task == "version":
         print(
             "{}{}-{}{}".format(
                 f"{ICON} " if args.show_icon else "",
@@ -38,8 +42,7 @@ def main(
                 "\\n{}".format(DESCRIPTION) if args.show_description else "",
             )
         )
-        success = True
     else:
         return False, f"-{NAME}: {args.task}: command not found."
 
-    return success, "" if success else f"-{NAME}: {args.task}: failed."
+    return success, ("" if success else f"-{NAME}: {args.task}: failed.")
