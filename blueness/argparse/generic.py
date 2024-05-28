@@ -5,6 +5,7 @@ list_of_tasks = ["locate", "version"]
 
 
 def main(
+    main_filename: str,
     NAME: str,
     VERSION: str,
     DESCRIPTION: str,
@@ -32,7 +33,7 @@ def main(
 
     success = args.task in list_of_tasks
     if args.task == "locate":
-        print(__file__)
+        print(main_filename)
     elif args.task == "version":
         print(
             "{}{}-{}{}".format(
