@@ -29,7 +29,7 @@ def get_long_description(
             "./",
             "https://raw.githubusercontent.com/kamangir/{}/{}/".format(
                 repo_name,
-                "current" if repo_name == "abcli" else "main",
+                "current" if repo_name == "awesome-bash-cli" else "main",
             ),
         )
 
