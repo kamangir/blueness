@@ -6,22 +6,6 @@ from logging import Logger
 list_of_tasks = ["locate", "version"]
 
 
-def ending(
-    logger: Logger,
-    NAME: str,
-    task: str,
-    success: Union[bool, None],
-    log: bool = True,
-):
-    if log:
-        if success is None:
-            logger.error(f"-{NAME}: {task}: command not found.")
-        elif not success:
-            logger.error(f"-{NAME}: {task}: failed.")
-
-    sys.exit(1 - int(success))
-
-
 def main(
     main_filename: str,
     NAME: str,
@@ -65,3 +49,19 @@ def main(
         return False, f"-{NAME}: {args.task}: command not found."
 
     return success, ("" if success else f"-{NAME}: {args.task}: failed.")
+
+
+def sys_exit(
+    logger: Logger,
+    NAME: str,
+    task: str,
+    success: Union[bool, None],
+    log: bool = True,
+):
+    if log:
+        if success is None:
+            logger.error(f"-{NAME}: {task}: command not found.")
+        elif not success:
+            logger.error(f"-{NAME}: {task}: failed.")
+
+    sys.exit(1 - int(success))
