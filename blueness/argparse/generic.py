@@ -1,7 +1,25 @@
 import argparse
-from typing import Tuple
+import sys
+from typing import Tuple, Union
+from logging import Logger
 
 list_of_tasks = ["locate", "version"]
+
+
+def ending(
+    logger: Logger,
+    NAME: str,
+    task: str,
+    success: Union[bool, None],
+    log: bool = True,
+):
+    if log:
+        if success is None:
+            logger.error(f"-{NAME}: {task}: command not found.")
+        elif not success:
+            logger.error(f"-{NAME}: {task}: failed.")
+
+    sys.exit(1 - int(success))
 
 
 def main(
