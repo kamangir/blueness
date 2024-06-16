@@ -64,4 +64,7 @@ def sys_exit(
         elif not success:
             logger.error(f"-{NAME}: {task}: failed.")
 
-    sys.exit(1 - int(success))
+    if success == True:
+        sys.exit(0)
+
+    sys.exit(1)
