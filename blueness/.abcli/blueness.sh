@@ -12,5 +12,3 @@ function blueness() {
         plugin=blueness,task=$task \
         "${@:2}"
 }
-
-abcli_log $(blueness version --show_icon 1)
