@@ -1,4 +1,6 @@
 import argparse
+import os
+from typing import Dict, Callable
 import sys
 from typing import Tuple, Union
 from logging import Logger
@@ -12,6 +14,7 @@ def main(
     VERSION: str,
     DESCRIPTION: str,
     ICON: str,
+    tasks: Dict[str, Callable] = {},
 ) -> Tuple[bool, str]:
     parser = argparse.ArgumentParser(NAME, description=f"{NAME}-{VERSION}")
     parser.add_argument(
@@ -34,8 +37,10 @@ def main(
     args = parser.parse_args()
 
     success = args.task in list_of_tasks
-    if args.task == "locate":
-        print(main_filename)
+    if args.task in tasks:
+        success = tasks[args.task](args)
+    elif args.task == "locate":
+        print(os.path.dirname(os.path.abspath(main_filename)))
     elif args.task == "version":
         print(
             "{}{}-{}{}".format(
