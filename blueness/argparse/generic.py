@@ -1,6 +1,6 @@
 import argparse
 import os
-from typing import Dict, Callable
+from typing import Dict, Callable, Optional
 import sys
 from typing import Tuple, Union
 from logging import Logger
@@ -57,19 +57,24 @@ def main(
 
 
 def sys_exit(
-    logger: Logger,
+    logger: Optional[Logger],
     NAME: str,
     task: str,
     success: Union[bool, None],
     log: bool = True,
 ):
-    if log:
-        if success is None:
-            logger.error(f"-{NAME}: {task}: command not found.")
-        elif not success:
-            logger.error(f"-{NAME}: {task}: failed.")
+    if log and success is not True:
+        message = (
+            "command not found."
+            if success is None
+            else "failed." if not success else ""
+        )
 
-    if success is True:
-        sys.exit(0)
+        message = f"-{NAME}: {task}: {message}"
 
-    sys.exit(1)
+        if logger is None:
+            print(message)
+        else:
+            logger.error(message)
+
+    sys.exit(0 if success is True else 1)
