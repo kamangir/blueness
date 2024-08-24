@@ -10,17 +10,18 @@ list_of_tasks = ["locate", "version"]
 
 def main(
     main_filename: str,
+    logger: Optional[Logger],
     NAME: str,
     VERSION: str,
     DESCRIPTION: str,
     ICON: str,
     tasks: Dict[str, Callable] = {},
-) -> Tuple[bool, str]:
+):
     parser = argparse.ArgumentParser(NAME, description=f"{NAME}-{VERSION}")
     parser.add_argument(
         "task",
         type=str,
-        help="|".join(list_of_tasks),
+        help="|".join(list_of_tasks + list(tasks.keys())),
     )
     parser.add_argument(
         "--show_description",
@@ -51,9 +52,9 @@ def main(
             )
         )
     else:
-        return False, f"-{NAME}: {args.task}: command not found."
+        success = None
 
-    return success, ("" if success else f"-{NAME}: {args.task}: failed.")
+    sys_exit(logger, NAME, args.task, success, log=True)
 
 
 def sys_exit(
@@ -73,7 +74,7 @@ def sys_exit(
         message = f"-{NAME}: {task}: {message}"
 
         if logger is None:
-            print(message)
+            print(f"❗️ {message}")
         else:
             logger.error(message)
 
