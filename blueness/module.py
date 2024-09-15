@@ -5,6 +5,10 @@ def name(
     filename: str,
     module_name: str,
 ) -> str:
+    assert (
+        module_name in filename
+    ), f'is NAME imported correctly? module name "{module_name}" is not in the filename "{filename}"!'
+
     relative_path = filename.split(f"{module_name}{os.sep}", 1)[1]
 
     if relative_path.endswith(".py"):
