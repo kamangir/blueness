@@ -17,7 +17,7 @@ def main(
     ICON: str,
     tasks: Dict[str, Callable] = {},
 ):
-    parser = argparse.ArgumentParser(NAME, description=f"{NAME}-{VERSION}")
+    parser = argparse.ArgumentParser(NAME)
     parser.add_argument(
         "task",
         type=str,
