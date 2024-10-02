@@ -71,7 +71,7 @@ def sys_exit(
             else "failed." if not success else ""
         )
 
-        message = f"-{NAME}: {task}: {message}"
+        message = f"{NAME}: {task}: {message}"
 
         if logger is None:
             print(f"❗️ {message}")

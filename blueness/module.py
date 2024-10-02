@@ -16,4 +16,6 @@ def name(
 
     hierarchy = [item for item in relative_path.split(os.sep)]
 
+    hierarchy = [item for item in hierarchy if item not in ["__main__"]]
+
     return ".".join([module_name] + hierarchy)
