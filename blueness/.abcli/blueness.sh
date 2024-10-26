@@ -20,7 +20,7 @@ function blueness() {
             blue_options \
             blue_objects \
             blue_geo \
-            notebooks_and_scripts; do
+            blueflow; do
             pip install --upgrade $module
         done
         return
