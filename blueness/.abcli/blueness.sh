@@ -20,7 +20,8 @@ function blueness() {
             blue_options \
             blue_objects \
             blue_geo \
-            blueflow; do
+            blueflow \
+            abcli; do
             pip install --upgrade $module
         done
         return
