@@ -1,20 +1,11 @@
 #! /usr/bin/env bash
 
-function blueness() {
+alias blueness=abcli_blueness
+
+function abcli_blueness() {
     local task=$(abcli_unpack_keyword $1 help)
 
-    if [[ "$task" == "help" ]]; then
-        blueness upgrade "$@"
-        return
-    fi
-
     if [ $task == "upgrade" ]; then
-        if [[ "$2" == "help" ]]; then
-            abcli_show_usage "blueness upgrade" \
-                "upgrade blueness and its modules 🌀."
-            return
-        fi
-
         local module
         for module in blueness \
             blue_options \
