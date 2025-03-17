@@ -30,7 +30,7 @@ def get_long_description(
 
     output = output.replace(
         "./",
-        "https://raw.githubusercontent.com/kamangir/{}/{}/".format(
+        "https://github.com/kamangir/{}/blob/{}/".format(
             repo_name,
             "current" if repo_name == "awesome-bash-cli" else "main",
         ),
