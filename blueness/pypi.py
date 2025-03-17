@@ -1,6 +1,7 @@
 import os
 from setuptools import setup as setup_real
-from typing import Tuple
+
+from blueness import ICON, VERSION
 
 
 def find_file(path: str, filename: str) -> str:
@@ -25,13 +26,19 @@ def get_long_description(
     filename = find_file(os.path.dirname(filename), "README.md")
 
     with open(filename) as f:
-        return f.read().replace(
-            "./",
-            "https://raw.githubusercontent.com/kamangir/{}/{}/".format(
-                repo_name,
-                "current" if repo_name == "awesome-bash-cli" else "main",
-            ),
-        )
+        output = f.read()
+
+    output = output.replace(
+        "./",
+        "https://raw.githubusercontent.com/kamangir/{}/{}/".format(
+            repo_name,
+            "current" if repo_name == "awesome-bash-cli" else "main",
+        ),
+    )
+
+    output = f"{output}\nbuilt by {ICON} `blueness-{VERSION}`."
+
+    return output
 
 
 def get_requirements(filename: str) -> list:
