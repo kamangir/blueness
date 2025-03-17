@@ -36,7 +36,7 @@ def get_long_description(
         ),
     )
 
-    output = f"{output}\nbuilt by {ICON} `blueness-{VERSION}`."
+    output = f"{output}\nbuilt by {ICON} [`blueness-{VERSION}`](https://github.com/kamangir/blueness)."
 
     return output
 
