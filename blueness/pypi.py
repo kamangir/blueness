@@ -36,6 +36,13 @@ def get_long_description(
         ),
     )
 
+    if "```mermaid" in output:
+        slices = output.split("```mermaid", 1)
+
+        assert "```" in slices[1], "open mermaid found."
+        slices[1] = slices[1].split("```", 1)[1]
+        output = "".join(slices)
+
     output = f"{output}\nbuilt by {ICON} [`blueness-{VERSION}`](https://github.com/kamangir/blueness)."
 
     return output
