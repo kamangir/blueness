@@ -5,7 +5,7 @@ function blueness() {
 }
 
 function abcli_blueness() {
-    local task=$(abcli_unpack_keyword $1 help)
+    local task=$1
 
     if [ $task == "upgrade" ]; then
         local module
