@@ -1,6 +1,6 @@
 # 🌀 blueness
 
-The blueness of AI enables [bluer-ai](https://github.com/kamangir/bluer-ai).
+The blueness of AI enables [`bluer-ai`](https://github.com/kamangir/bluer-ai).
 
 ```bash
 pip install blueness
