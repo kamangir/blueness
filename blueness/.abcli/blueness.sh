@@ -1,6 +1,8 @@
 #! /usr/bin/env bash
 
-alias blueness=abcli_blueness
+function blueness() {
+    abcli_blueness "$@"
+}
 
 function abcli_blueness() {
     local task=$(abcli_unpack_keyword $1 help)
