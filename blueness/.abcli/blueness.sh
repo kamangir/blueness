@@ -1,10 +1,6 @@
 #! /usr/bin/env bash
 
 function blueness() {
-    abcli_blueness "$@"
-}
-
-function abcli_blueness() {
     local task=$1
 
     if [ $task == "upgrade" ]; then
