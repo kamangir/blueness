@@ -2,8 +2,12 @@ NAME = "blueness"
 
 ICON = "🌀"
 
-DESCRIPTION = f"{ICON} the blueness of ai."
+DESCRIPTION = f"{ICON} Blueness for Bluer AI."
 
-VERSION = "3.115.1"
+VERSION = "3.117.1"
 
 REPO_NAME = "blueness"
+
+MARQUEE = (
+    "https://github.com/kamangir/assets/raw/main/blue-objects/marquee.png?raw=true"
+)
