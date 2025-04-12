@@ -16,7 +16,7 @@ function blueness() {
         return
     fi
 
-    abcli_generic_task \
+    bluer_ai_generic_task \
         plugin=blueness,task=$task \
         "${@:2}"
 }
