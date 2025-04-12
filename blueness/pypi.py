@@ -64,7 +64,7 @@ def setup(
 ):
     setup_real(
         author="Arash Abadpour (Kamangir)",
-        author_email="arash@kamangir.net",
+        author_email="arash.abadpour@gmail.com",
         classifiers=[
             "Programming Language :: Python :: 3",
             "Programming Language :: Unix Shell",
