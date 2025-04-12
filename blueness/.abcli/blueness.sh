@@ -1,10 +1,6 @@
 #! /usr/bin/env bash
 
 function blueness() {
-    abcli_blueness "$@"
-}
-
-function abcli_blueness() {
     local task=$1
 
     if [ $task == "upgrade" ]; then
@@ -20,7 +16,7 @@ function abcli_blueness() {
         return
     fi
 
-    abcli_generic_task \
+    bluer_ai_generic_task \
         plugin=blueness,task=$task \
         "${@:2}"
 }
