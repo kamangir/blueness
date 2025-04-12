@@ -4,7 +4,7 @@ ICON = "🌀"
 
 DESCRIPTION = f"{ICON} Blueness for Bluer AI."
 
-VERSION = "3.117.1"
+VERSION = "3.118.1"
 
 REPO_NAME = "blueness"
 
