@@ -2,9 +2,9 @@ NAME = "blueness"
 
 ICON = "🌀"
 
-DESCRIPTION = f"{ICON} the blueness of ai."
+DESCRIPTION = f"{ICON} Blueness for Bluer AI."
 
-VERSION = "3.116.1"
+VERSION = "3.117.1"
 
 REPO_NAME = "blueness"
 
