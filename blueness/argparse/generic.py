@@ -24,6 +24,11 @@ def main(
         help="|".join(list_of_tasks + list(tasks.keys())),
     )
     parser.add_argument(
+        "--root",
+        type=str,
+        default="root",
+    )
+    parser.add_argument(
         "--show_description",
         type=int,
         default=0,
