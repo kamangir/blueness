@@ -21,7 +21,13 @@ def main(
     parser.add_argument(
         "task",
         type=str,
-        help="|".join(list_of_tasks + list(tasks.keys())),
+        help=" | ".join(list_of_tasks + list(tasks.keys())),
+    )
+    parser.add_argument(
+        "--ai",
+        type=int,
+        default=0,
+        help="0 | 1",
     )
     parser.add_argument(
         "--root",
@@ -32,13 +38,13 @@ def main(
         "--show_description",
         type=int,
         default=0,
-        help="0|1",
+        help="0 | 1",
     )
     parser.add_argument(
         "--show_icon",
         type=int,
         default=0,
-        help="0|1",
+        help="0 | 1",
     )
     args = parser.parse_args()
 
